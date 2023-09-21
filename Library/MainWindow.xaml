@@ -5,8 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Бібліотека" Height="450" Width="800" MinHeight="450" MinWidth="800" Background="PapayaWhip">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="booksList" Grid.Row="1" Margin="10 10 0 10" Background="PapayaWhip"
+                 BorderThickness="3" SelectionMode="Single"></ListBox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="11*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="searchBar" Margin="10 3 3 3" FontSize="20" Background="PapayaWhip"
+                     BorderThickness="2"></TextBox>
+            <WrapPanel Orientation="Horizontal" Grid.Row="1">
+                <TextBlock Text="Пошук за:" FontSize="18" Margin="10 10 10 0"></TextBlock>
+                <RadioButton x:Name="filterName" Content="Назвою" GroupName="SearchFilters"
+                             Margin="10 18 10 0" FontSize="16" IsChecked="True" Tag="name"></RadioButton>
+                <RadioButton x:Name="filterAuthor" Content="Автором" GroupName="SearchFilters"
+                             Margin="10 18 10 0" FontSize="16" IsChecked="False" Tag="author"></RadioButton>
+                <RadioButton x:Name="filterGenre" Content="Жанром" GroupName="SearchFilters"
+                             Margin="10 18 10 0" FontSize="16" IsChecked="False" Tag="genre"></RadioButton>
+            </WrapPanel>
+            <Button x:Name="searchBtn" Grid.Column="1" Content="Пошук" Margin="0 3"
+                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2"></Button> 
+        </Grid>
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnUsers" Content="Користувачі" FontSize="14" Margin="20"
+                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2" Click="btnUsers_Click"></Button>
+            <Button x:Name="btnAddBook" Grid.Row="1" Content="Додати книгу" FontSize="14" Margin="20"
+                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2" Click="btnAddBook_Click"></Button>
+            <Button x:Name="btnEditBook" Grid.Row="2" Content="Редагувати книгу" FontSize="14" Margin="20"
+                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2" Click="btnEditBook_Click"></Button>
+            <Button x:Name="btnDeleteBook" Grid.Row="3" Content="Видалити книгу" FontSize="14" Margin="20"
+                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2"></Button>
+            <Button x:Name="btnLendings" Grid.Row="4" Content="Видати книгу на руки" FontSize="14" Margin="20"
+                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2"></Button>
+            <Button x:Name="btnReports" Grid.Row="5" Content="Звіти" FontSize="14" Margin="20"
+                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2"></Button>
+        </Grid>
     </Grid>
 </Window>

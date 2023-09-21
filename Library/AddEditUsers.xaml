@@ -1,0 +1,36 @@
+﻿<Window x:Class="Library.AddEditUsers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library"
+        mc:Ignorable="d"
+        Title="Редагування користувачів" Height="200" Width="600" Background="LightSkyBlue">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Прізвище" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                   Margin="5"></TextBlock>
+        <TextBlock Text="Ім'я" FontSize="16" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+           Margin="5"></TextBlock>
+        <TextBlock Text="Номер телефону" FontSize="16" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+           Margin="5"></TextBlock>
+        <TextBox x:Name="userLastName" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Margin="5"
+                 BorderThickness="2"></TextBox>
+        <TextBox x:Name="userName" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" FontSize="20"
+                 Margin="5" BorderThickness="2"></TextBox>
+        <TextBox x:Name="userPhone" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" FontSize="20"
+         Margin="5" BorderThickness="2"></TextBox>
+        <Button x:Name="btnAddEditUser" Content="Додати користувача" Grid.Row="2" Grid.Column="1"
+                FontSize="14" Background="LightSkyBlue" Margin="15 8" BorderThickness="2"
+                BorderBrush="#FFABADB3"></Button>
+    </Grid>
+</Window>

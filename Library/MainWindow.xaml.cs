@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library.DAL.SQL.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,30 @@ namespace Library
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnUsers_Click(object sender, RoutedEventArgs e)
+        {
+            UsersWindow usersWindow = new UsersWindow();
+
+            usersWindow.ShowDialog();
+        }
+
+        private void btnAddBook_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditBooks addEditBooks = new AddEditBooks(null);
+
+            addEditBooks.ShowDialog();
+        }
+
+        private void btnEditBook_Click(object sender, RoutedEventArgs e)
+        {
+            if (booksList.SelectedItem != null)
+            {
+                AddEditBooks addEditBooks = new AddEditBooks((Book)booksList.SelectedItem);
+
+                addEditBooks.ShowDialog();
+            }
         }
     }
 }
