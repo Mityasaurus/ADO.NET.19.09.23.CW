@@ -31,5 +31,30 @@ namespace Library.Services
         {
             return _repository.GetAll();
         }
+
+        public void Remove(Book book)
+        {
+            _repository.Remove(book);
+        }
+
+        public void Update(int id, Book book)
+        {
+            _repository.Update(id, book);
+        }
+
+        public IEnumerable<Book> GetBooksByName(string filter)
+        {
+            return _repository.GetAll().Where(b => b.Name.ToLower().Contains(filter.ToLower()));
+        }
+
+        public IEnumerable<Book> GetBooksByAuthor(string filter)
+        {
+            return _repository.GetAll().Where(b => b.Author.ToLower().Contains(filter.ToLower()));
+        }
+
+        public IEnumerable<Book> GetBooksByGenre(string filter)
+        {
+            return _repository.GetAll().Where(b => b.Genre.ToLower().Contains(filter.ToLower()));
+        }
     }
 }

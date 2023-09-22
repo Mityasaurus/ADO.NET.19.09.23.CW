@@ -1,6 +1,8 @@
 ﻿using Library.DAL.SQL.Entity;
+using Library.Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,17 +22,64 @@ namespace Library
     /// </summary>
     public partial class AddEditBooks : Window
     {
-        public AddEditBooks(Book book)
+        private readonly BooksProvider _provider;
+        private Book? oldBook;
+
+        public AddEditBooks(Book book, BooksProvider booksProvider)
         {
             InitializeComponent();
 
+            _provider = booksProvider;
+            oldBook = null;
+
             if (book != null)
             {
-                btnAddEditUser.Content = "Завершити редагування";
+                oldBook = book;
+                btnAddEditBook.Content = "Завершити редагування";
                 bookName.Text = book.Name;
                 bookAuthor.Text = book.Author;
                 bookGenre.Text = book.Genre;
                 bookNumber.Text = book.Number.ToString();
+            }
+        }
+
+        private void btnAddEditBook_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (oldBook == null)
+                {
+                    Book newBook = new Book()
+                    {
+                        Name = bookName.Text,
+                        Author = bookAuthor.Text,
+                        Genre = bookGenre.Text,
+                        Number = int.Parse(bookNumber.Text)
+                    };
+
+                    _provider.AddBook(newBook);
+
+                    Close();
+                }
+                else
+                {
+                    Book editedBook = new Book()
+                    {
+                        ID = oldBook.ID,
+                        Name = bookName.Text,
+                        Author = bookAuthor.Text,
+                        Genre = bookGenre.Text,
+                        Number = int.Parse(bookNumber.Text)
+                    };
+
+                    _provider.Update(oldBook.ID, editedBook);
+
+                    Close();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Неправильний формат даних", "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

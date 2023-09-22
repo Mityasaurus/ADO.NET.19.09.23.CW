@@ -31,6 +31,6 @@
          Margin="5" BorderThickness="2"></TextBox>
         <Button x:Name="btnAddEditUser" Content="Додати користувача" Grid.Row="2" Grid.Column="1"
                 FontSize="14" Background="LightSkyBlue" Margin="15 8" BorderThickness="2"
-                BorderBrush="#FFABADB3"></Button>
+                BorderBrush="#FFABADB3" Click="btnAddEditUser_Click"></Button>
     </Grid>
 </Window>

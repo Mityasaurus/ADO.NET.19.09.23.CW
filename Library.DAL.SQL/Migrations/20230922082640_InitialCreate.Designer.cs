@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.DAL.SQL.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20230921174046_InitialCreate")]
+    [Migration("20230922082640_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -28,7 +28,10 @@ namespace Library.DAL.SQL.Migrations
             modelBuilder.Entity("Library.DAL.SQL.Entity.Book", b =>
                 {
                     b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Author")
                         .IsRequired()
@@ -58,13 +61,23 @@ namespace Library.DAL.SQL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int>("BookID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("IssueDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("BookID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("Lendings");
                 });
@@ -72,7 +85,10 @@ namespace Library.DAL.SQL.Migrations
             modelBuilder.Entity("Library.DAL.SQL.Entity.User", b =>
                 {
                     b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -91,35 +107,33 @@ namespace Library.DAL.SQL.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Library.DAL.SQL.Entity.Book", b =>
+            modelBuilder.Entity("Library.DAL.SQL.Entity.Lending", b =>
                 {
-                    b.HasOne("Library.DAL.SQL.Entity.Lending", "Lending")
-                        .WithOne("Book")
-                        .HasForeignKey("Library.DAL.SQL.Entity.Book", "ID")
+                    b.HasOne("Library.DAL.SQL.Entity.Book", "Book")
+                        .WithMany("Lendings")
+                        .HasForeignKey("BookID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Lending");
+                    b.HasOne("Library.DAL.SQL.Entity.User", "User")
+                        .WithMany("Lendings")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Library.DAL.SQL.Entity.Book", b =>
+                {
+                    b.Navigation("Lendings");
                 });
 
             modelBuilder.Entity("Library.DAL.SQL.Entity.User", b =>
                 {
-                    b.HasOne("Library.DAL.SQL.Entity.Lending", "Lending")
-                        .WithOne("User")
-                        .HasForeignKey("Library.DAL.SQL.Entity.User", "ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Lending");
-                });
-
-            modelBuilder.Entity("Library.DAL.SQL.Entity.Lending", b =>
-                {
-                    b.Navigation("Book")
-                        .IsRequired();
-
-                    b.Navigation("User")
-                        .IsRequired();
+                    b.Navigation("Lendings");
                 });
 #pragma warning restore 612, 618
         }

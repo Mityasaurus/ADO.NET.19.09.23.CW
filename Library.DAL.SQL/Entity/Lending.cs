@@ -11,6 +11,9 @@ namespace Library.DAL.SQL.Entity
         [Required]
         public DateTime DueDate { get; set; }
 
+        public int UserID { get; set; }
+        public int BookID { get; set; }
+
         public Book Book { get; set; }
 
         public User User { get; set; }

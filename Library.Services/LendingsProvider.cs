@@ -31,5 +31,15 @@ namespace Library.Services
         {
             return _repository.GetAll();
         }
+
+        public void Remove(Lending lending)
+        {
+            _repository.Remove(lending);
+        }
+
+        public void Update(int id, Lending lending)
+        {
+            _repository.Update(id, lending);
+        }
     }
 }

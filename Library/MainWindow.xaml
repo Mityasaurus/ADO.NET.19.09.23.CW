@@ -16,7 +16,7 @@
             <RowDefinition Height="4*"></RowDefinition>
         </Grid.RowDefinitions>
         <ListBox x:Name="booksList" Grid.Row="1" Margin="10 10 0 10" Background="PapayaWhip"
-                 BorderThickness="3" SelectionMode="Single"></ListBox>
+                 BorderThickness="3" SelectionMode="Single" FontSize="12"></ListBox>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
@@ -38,7 +38,8 @@
                              Margin="10 18 10 0" FontSize="16" IsChecked="False" Tag="genre"></RadioButton>
             </WrapPanel>
             <Button x:Name="searchBtn" Grid.Column="1" Content="Пошук" Margin="0 3"
-                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2"></Button> 
+                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2"
+                    Click="searchBtn_Click"></Button> 
         </Grid>
         <Grid Grid.Column="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
@@ -56,7 +57,7 @@
             <Button x:Name="btnEditBook" Grid.Row="2" Content="Редагувати книгу" FontSize="14" Margin="20"
                     Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2" Click="btnEditBook_Click"></Button>
             <Button x:Name="btnDeleteBook" Grid.Row="3" Content="Видалити книгу" FontSize="14" Margin="20"
-                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2"></Button>
+                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2" Click="btnDeleteBook_Click"></Button>
             <Button x:Name="btnLendings" Grid.Row="4" Content="Видати книгу на руки" FontSize="14" Margin="20"
                     Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2"></Button>
             <Button x:Name="btnReports" Grid.Row="5" Content="Звіти" FontSize="14" Margin="20"

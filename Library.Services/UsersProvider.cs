@@ -31,5 +31,15 @@ namespace Library.Services
         {
             return _repository.GetAll();
         }
+
+        public void Remove(User user)
+        {
+            _repository.Remove(user);
+        }
+
+        public void Update(int id, User user)
+        {
+            _repository.Update(id, user);
+        }
     }
 }

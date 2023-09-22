@@ -16,7 +16,8 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="usersList" Background="LightSkyBlue" Margin="20" BorderThickness="3" Grid.ColumnSpan="3"></ListBox>
+        <ListBox x:Name="usersList" Background="LightSkyBlue" Margin="20" BorderThickness="3"
+                 Grid.ColumnSpan="3" FontSize="18"></ListBox>
         <Button x:Name="btnAddUser" Grid.Row="1" Content="Додати користувача"
                 BorderBrush="#FFABADB3" BorderThickness="2" Margin="20 7 10 7" Background="LightSkyBlue"
                 FontSize="14" Click="btnAddUser_Click"></Button>
@@ -25,6 +26,6 @@
         FontSize="14" Click="btnEditUser_Click"></Button>
         <Button x:Name="btnDeleteUser" Grid.Row="1" Grid.Column="2" Content="Видалити користувача"
         BorderBrush="#FFABADB3" BorderThickness="2" Margin="10 7 20 7" Background="LightSkyBlue"
-        FontSize="14"></Button>
+        FontSize="14" Click="btnDeleteUser_Click"></Button>
     </Grid>
 </Window>

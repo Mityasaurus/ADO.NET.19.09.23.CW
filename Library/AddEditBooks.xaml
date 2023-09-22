@@ -34,8 +34,8 @@
          Margin="5" BorderThickness="2"></TextBox>
         <TextBox x:Name="bookNumber" Grid.Row="1" Grid.Column="3" VerticalAlignment="Top" FontSize="20"
                  Margin="5" BorderThickness="2"></TextBox>
-        <Button x:Name="btnAddEditUser" Content="Додати книгу" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+        <Button x:Name="btnAddEditBook" Content="Додати книгу" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                 FontSize="14" Background="PapayaWhip" Margin="100 8" BorderThickness="2"
-                BorderBrush="#FFABADB3"></Button>
+                BorderBrush="#FFABADB3" Click="btnAddEditBook_Click"></Button>
     </Grid>
 </Window>

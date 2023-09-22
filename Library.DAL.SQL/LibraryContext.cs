@@ -20,14 +20,14 @@ namespace Library.DAL.SQL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Lending>()
-                .HasOne(l => l.Book)
-                .WithOne(b => b.Lending)
-                .HasForeignKey<Book>(b => b.ID);
+                .HasOne(l => l.User)
+                .WithMany(u => u.Lendings)
+                .HasForeignKey(l => l.UserID);
 
             modelBuilder.Entity<Lending>()
-                .HasOne(l => l.User)
-                .WithOne(u => u.Lending)
-                .HasForeignKey<User>(u => u.ID);
+                .HasOne(l => l.Book)
+                .WithMany(b => b.Lendings)
+                .HasForeignKey(l => l.BookID);
 
             base.OnModelCreating(modelBuilder);
         }
