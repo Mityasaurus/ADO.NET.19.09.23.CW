@@ -41,5 +41,28 @@ namespace Library.Services
         {
             _repository.Update(id, user);
         }
+
+        public IEnumerable<User> GetUsersByNameOrLastName(string filter)
+        {
+            if(filter == "")
+            {
+                return GetAllUsers();
+            }
+
+            var filters = filter.Split(' ').ToList();
+
+            filters.ForEach(f => f = f.ToLower());
+            if(filters.Count == 1)
+            {
+                filters.Add("");
+            }
+
+
+            return GetAllUsers()
+                  .Where(u => u.Name.ToLower().Contains(filters[0])
+                  && u.LastName.ToLower().Contains(filters[1])
+                  || u.Name.ToLower().Contains(filters[1])
+                  && u.LastName.ToLower().Contains(filters[0]));
+        }
     }
 }

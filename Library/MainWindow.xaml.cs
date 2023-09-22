@@ -42,6 +42,8 @@ namespace Library
             lendingsProvider = new LendingsProvider(repositoryLendings);
 
             UpdateDataSource(_books);
+
+            { var users = _users; }
         }
 
         private void UpdateDataSource(IEnumerable<Book> source)
@@ -67,6 +69,12 @@ namespace Library
 
         private void btnEditBook_Click(object sender, RoutedEventArgs e)
         {
+            if(booksList.SelectedItem == null)
+            {
+                MessageBox.Show("Оберіть книгу для редагування", "Редагування книги");
+                return;
+            }
+
             if (booksList.SelectedItem != null)
             {
                 AddEditBooks addEditBooks = new AddEditBooks((Book)booksList.SelectedItem, booksProvider);
@@ -107,6 +115,15 @@ namespace Library
             {
                 UpdateDataSource(booksProvider.GetBooksByGenre(filter));
             }
+        }
+
+        private void btnLendings_Click(object sender, RoutedEventArgs e)
+        {
+            ActiveLendingsWindow activeLendingsWindow = new ActiveLendingsWindow(lendingsProvider, booksProvider, usersProvider);
+            
+            activeLendingsWindow.ShowDialog();
+
+            UpdateDataSource(_books);
         }
     }
 }

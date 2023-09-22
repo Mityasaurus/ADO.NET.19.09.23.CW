@@ -17,5 +17,10 @@ namespace Library.DAL.SQL.Entity
         public Book Book { get; set; }
 
         public User User { get; set; }
+
+        public override string ToString()
+        {
+            return $"Користувач - {User}\nКнига - {Book}\nДата видачі - {IssueDate.ToShortDateString()}. Очікувана дата повернення - {DueDate.ToShortDateString()}";
+        }
     }
 }

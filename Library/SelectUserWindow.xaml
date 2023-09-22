@@ -1,0 +1,23 @@
+﻿<Window x:Class="Library.SelectUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library"
+        mc:Ignorable="d"
+        Title="Вибір користувача" Height="450" Width="800" Background="LightSkyBlue">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="searchBar" Margin="21 8 21 0" FontSize="16" TextChanged="searchBar_TextChanged" 
+                 BorderThickness="2"></TextBox>
+        <ListBox x:Name="usersList" Grid.Row="1" Background="LightSkyBlue" Margin="20" 
+                 BorderThickness="3" FontSize="18"></ListBox>
+        <Button x:Name="btnSelect" Grid.Row="2" Content="Обрати користувача"
+                BorderBrush="#FFABADB3" BorderThickness="2" Padding="20 7" Background="LightSkyBlue"
+                FontSize="16" HorizontalAlignment="Center" Click="btnSelect_Click"></Button>
+    </Grid>
+</Window>

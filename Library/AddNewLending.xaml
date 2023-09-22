@@ -1,0 +1,38 @@
+﻿<Window x:Class="Library.AddNewLending"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library"
+        mc:Ignorable="d"
+        Title="Видача книги на руки" Height="450" Width="1000" Background="PapayaWhip">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="activeBook" Grid.ColumnSpan="2" FontSize="18"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock x:Name="activeUser" Grid.ColumnSpan="2" Grid.Row="1" FontSize="18"
+           HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Row="2" FontSize="18" Text="Дата видачі (РРРР-ММ-ДД)"
+           HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" Text="Очікувана дата повернення (РРРР-ММ-ДД)"
+           HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"></TextBlock>
+        <TextBox x:Name="issueDateBox" Grid.Row="3" FontSize="26" Margin="90 0" VerticalAlignment="Top"></TextBox>
+        <TextBox x:Name="dueDateBox" Grid.Column="1" Grid.Row="3" FontSize="26" Margin="90 0" VerticalAlignment="Top"></TextBox>
+        <Button x:Name="btnAddLending" Grid.Row="4" Content="Видати книгу" FontSize="20"
+                Margin="90 20" BorderBrush="#FFABADB3" BorderThickness="2" Background="PapayaWhip"
+                Click="btnAddLending_Click"></Button>
+        <Button x:Name="btnCancelLending" Grid.Row="4" Grid.Column="1" Content="Відміна видачі" FontSize="20"
+                Margin="90 20" BorderBrush="#FFABADB3" BorderThickness="2" Background="PapayaWhip"
+                Click="btnCancelLending_Click"></Button>
+    </Grid>
+</Window>
