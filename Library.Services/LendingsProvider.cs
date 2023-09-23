@@ -41,5 +41,12 @@ namespace Library.Services
         {
             _repository.Update(id, lending);
         }
+
+        public IEnumerable<User> GetOverdueUsers()
+        {
+            return GetAllLendings().Where(l => l.DueDate < DateTime.Now)
+                                   .Select(l => l.User)
+                                   .Distinct();
+        }
     }
 }

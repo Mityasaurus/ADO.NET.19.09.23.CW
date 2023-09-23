@@ -23,14 +23,16 @@ namespace Library
     {
         private readonly LendingsProvider _lendingsProvider;
         private readonly BooksProvider _booksProvider;
+        private readonly UsersProvider _usersProvider;
         private readonly Book _book;
         private readonly User _user;
-        public AddNewLending(Book book, User user, LendingsProvider lendingsProvider, BooksProvider booksProvider)
+        public AddNewLending(Book book, User user, LendingsProvider lendingsProvider, BooksProvider booksProvider, UsersProvider usersProvider)
         {
             InitializeComponent();
 
             _lendingsProvider = lendingsProvider;
             _booksProvider = booksProvider;
+            _usersProvider = usersProvider;
             activeBook.Text = $"Обрана книга - {book}";
             activeUser.Text = $"Обраний користувач - {user}";
 
@@ -71,7 +73,25 @@ namespace Library
                     Number = _book.Number - 1,
                 };
 
+                var lendingsBook = bookNewNumber.Lendings == null ? new List<Lending>() : bookNewNumber.Lendings.ToList();
+                lendingsBook.Add(newLending);
+                bookNewNumber.Lendings = lendingsBook;
+
                 _booksProvider.Update(_book.ID, bookNewNumber);
+
+                User newUser = new User()
+                {
+                    ID = _user.ID,
+                    Name = _user.Name,
+                    LastName = _user.LastName,
+                    Phone = _user.Phone
+                };
+
+                var lendingsUser = newUser.Lendings == null ? new List<Lending>() : newUser.Lendings.ToList();
+                lendingsUser.Add(newLending);
+                newUser.Lendings = lendingsUser;
+
+                _usersProvider.Update(_user.ID, newUser);
 
                 Close();
 

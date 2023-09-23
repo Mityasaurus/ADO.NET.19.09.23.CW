@@ -44,6 +44,8 @@ namespace Library
             UpdateDataSource(_books);
 
             { var users = _users; }
+
+            { var lendings = _lendings; }
         }
 
         private void UpdateDataSource(IEnumerable<Book> source)
@@ -124,6 +126,13 @@ namespace Library
             activeLendingsWindow.ShowDialog();
 
             UpdateDataSource(_books);
+        }
+
+        private void btnReports_Click(object sender, RoutedEventArgs e)
+        {
+            ReportsWindow reportsWindow = new ReportsWindow(booksProvider, usersProvider, lendingsProvider);
+
+            reportsWindow.ShowDialog();
         }
     }
 }

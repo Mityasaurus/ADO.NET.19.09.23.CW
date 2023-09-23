@@ -61,7 +61,7 @@
             <Button x:Name="btnLendings" Grid.Row="4" Content="Активні видачі книг" FontSize="14" Margin="20"
                     Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2" Click="btnLendings_Click"></Button>
             <Button x:Name="btnReports" Grid.Row="5" Content="Звіти" FontSize="14" Margin="20"
-                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2"></Button>
+                    Background="PapayaWhip" BorderBrush="#FFABADB3" BorderThickness="2" Click="btnReports_Click"></Button>
         </Grid>
     </Grid>
 </Window>

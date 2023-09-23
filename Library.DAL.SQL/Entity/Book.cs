@@ -15,7 +15,7 @@ namespace Library.DAL.SQL.Entity
         [Required]
         public int Number { get; set; }
 
-        public virtual IEnumerable<Lending> Lendings { get; set; }
+        public virtual IEnumerable<Lending> Lendings { get; set; } = new List<Lending>();
 
         public override string ToString()
         {

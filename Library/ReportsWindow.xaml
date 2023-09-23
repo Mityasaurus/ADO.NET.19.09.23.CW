@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library"
         mc:Ignorable="d"
-        Title="ReportsWindow" Height="450" Width="800" Background="PapayaWhip">
+        Title="Звіти" Height="450" Width="800" Background="PapayaWhip">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="reportList" Background="PapayaWhip" BorderThickness="3" Grid.Column="1"
+                 Grid.RowSpan="2" Margin="10"></ListBox>
+        <StackPanel Background="PapayaWhip">
+            <ComboBox x:Name="reportsComboBox" Background="PapayaWhip" FontSize="14" Margin="10"></ComboBox>
+        </StackPanel>
+        <Button x:Name="btnMakeReport" Grid.Row="1" Content="Сформувати звіт" Background="PapayaWhip"
+                BorderBrush="#FFABADB3" BorderThickness="2" FontSize="16" Margin="20 10" Click="btnMakeReport_Click"></Button>
     </Grid>
 </Window>

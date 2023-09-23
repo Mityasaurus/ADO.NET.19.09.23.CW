@@ -52,6 +52,8 @@ namespace Library
             }
 
             Book selectedBook = ((Lending)lendingsList.SelectedItem).Book;
+            User selectedUser = ((Lending)lendingsList.SelectedItem).User;
+            Lending selectedLending = (Lending)lendingsList.SelectedItem;
 
             Book bookNewNumber = new Book()
             {
@@ -62,7 +64,25 @@ namespace Library
                 Number = selectedBook.Number + 1
             };
 
+            var lendingsBook = bookNewNumber.Lendings == null ? new List<Lending>() : bookNewNumber.Lendings.ToList();
+            lendingsBook.Remove(selectedLending);
+            bookNewNumber.Lendings = lendingsBook;
+
             _booksProvider.Update(bookNewNumber.ID, bookNewNumber);
+
+            User newUser = new User()
+            {
+                ID = selectedUser.ID,
+                Name = selectedUser.Name,
+                LastName = selectedUser.LastName,
+                Phone = selectedUser.Phone
+            };
+
+            var lendingsUser = newUser.Lendings == null ? new List<Lending>() : newUser.Lendings.ToList();
+            lendingsUser.Add(selectedLending);
+            newUser.Lendings = lendingsUser;
+
+            _usersProvider.Update(newUser.ID, newUser);
 
             _lendingsProvider.Remove((Lending)lendingsList.SelectedItem);
 
@@ -93,7 +113,7 @@ namespace Library
                 return;
             }
 
-            AddNewLending addNewLending = new AddNewLending(selectedBook, selectedUser, _lendingsProvider, _booksProvider);
+            AddNewLending addNewLending = new AddNewLending(selectedBook, selectedUser, _lendingsProvider, _booksProvider, _usersProvider);
 
             addNewLending.ShowDialog();
 

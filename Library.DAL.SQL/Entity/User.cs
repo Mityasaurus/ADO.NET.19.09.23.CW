@@ -13,7 +13,7 @@ namespace Library.DAL.SQL.Entity
         [Required]
         public string Phone { get; set; }
 
-        public virtual IEnumerable<Lending> Lendings { get; set; }
+        public virtual IEnumerable<Lending> Lendings { get; set; } = new List<Lending>();
 
         public override string ToString()
         {

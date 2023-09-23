@@ -56,5 +56,18 @@ namespace Library.Services
         {
             return _repository.GetAll().Where(b => b.Genre.ToLower().Contains(filter.ToLower()));
         }
+
+        public IEnumerable<Book> GetBooksWithZeroNumber()
+        {
+            return GetAllBooks().Where(b => b.Number == 0);
+        }
+
+        public IEnumerable<Book> GetTop3MostPopularBooksThisMonth()
+        {
+            return GetAllBooks().Where(b => b.Lendings.Count() > 0)
+                                .Where(b => b.Lendings.First().IssueDate.Month == DateTime.Now.Month)
+                                .OrderByDescending(b => b.Lendings.Count())
+                                .Take(3);
+        }
     }
 }

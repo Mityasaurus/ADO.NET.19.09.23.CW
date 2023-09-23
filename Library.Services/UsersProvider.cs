@@ -64,5 +64,10 @@ namespace Library.Services
                   || u.Name.ToLower().Contains(filters[1])
                   && u.LastName.ToLower().Contains(filters[0]));
         }
+
+        public IEnumerable<User> GetUsersMoreThan3Books()
+        {
+            return GetAllUsers().Where(u => u.Lendings.Count() >= 3);
+        }
     }
 }
