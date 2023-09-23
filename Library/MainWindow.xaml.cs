@@ -50,6 +50,11 @@ namespace Library
 
         private void UpdateDataSource(IEnumerable<Book> source)
         {
+            //var titleSource = new List<object>()
+            //{
+            //    $"{"Назва".PadRight(40)}{"Автор".PadRight(40)}{"Жанр".PadRight(30)}{"Кiлькiсть доступних"}"
+            //};
+            //titleSource.AddRange(source.Select(b => b.ToString()));
             booksList.ItemsSource = source;
         }
 
